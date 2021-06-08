@@ -1,0 +1,100 @@
+﻿@model IEnumerable<Angsoz.GerenciamentoAmigosAniversario.Web.Models.Pessoa>
+
+@{
+    ViewData["Title"] = "Lista de Aniversários";
+}
+
+
+
+<div class="row">
+    <div class="col-sm-12 col-lg-12">
+
+        <div class="widget">
+            <div class="widget-content border-bottom">
+                <strong> @ViewData["Title"]</strong>
+            </div>
+            <div class="widget-content border-bottom themed-background-muted">
+
+                <div class="row py-5">
+
+                    <div class="col-sm-12 col-lg-2">
+                        <a asp-action="Create" class="btn btn-effect-ripple btn-block btn-success"><i class="fa fa-plus-circle"></i> Adicionar novo amigo</a>
+                    </div>
+
+                    <div class="col-sm-12 col-lg-6">
+                    </div>
+
+                    <div class="col-sm-12 col-lg-4">
+
+                        <form asp-controller="Pessoas" asp-action="Index" method="post" style="display: flex;">
+                            <input type="text" name="searchString" class="form-control" placeholder="Pesquise o nome de um amigo...">
+                            <button type="submit" class="btn btn-effect-ripple btn-effect-ripple btn-primary " style="overflow: hidden;position: relative; padding-right: 20px; margin-left: 10px;">Pesquisar</button>
+                        </form>
+
+                    </div>
+                </div>
+
+                    <table class="table table-hover" style="margin-top:32px;">
+                        <thead style="background-color: #5ccdde">
+                            <tr class="text-white">
+                                <th>
+                                   Nome
+                                </th>
+                                <th>
+                                   Sobrenome
+                                </th>
+                                <th>
+                                   Data de nascimento
+                                </th>
+                                <th>
+                                    É amigo ou familiar?
+                                </th>
+                                <th>
+                                   Já te deu algum presente?
+                                </th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Nome)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Sobrenome)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.DataNascimento)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.AmigoOuFamiliar)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.TeDeuPresente)
+                                    </td>
+                                    <td>
+                                        <a class="btn themed-background-creme" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
+                                        <a class="btn themed-background-success" asp-action="Details" asp-route-id="@item.Id">Detalhes</a>
+                                        <a class="btn themed-background-danger" asp-action="Delete" asp-route-id="@item.Id">Excluir</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+
+                </div>
+            <div class="widget-content widget-content-full">
+                <div class="row text-center">
+                    
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+    

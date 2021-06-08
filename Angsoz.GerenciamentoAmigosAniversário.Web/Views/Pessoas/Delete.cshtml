@@ -1,0 +1,67 @@
+﻿@model Angsoz.GerenciamentoAmigosAniversario.Web.Models.Pessoa
+
+@{
+    ViewData["Title"] = "Excluir pessoa";
+}
+
+<h3 style="padding-left:15px">@ViewData["Title"] </h3>
+
+<div class="col-md-8 col-lg-9">
+
+    <div class="block">
+
+        <div class="block-title">
+
+            <div class="pull-right" >
+                <a class="btn themed-background-creme" asp-action="Edit" asp-route-id="@Model.Id">Editar</a>
+                <a class="btn themed-background-success" asp-action="Index"><i class="fa fa-undo"></i> Voltar a lista de aniversários</a>
+            </div>
+            <ul class="nav nav-tabs" data-toggle="tabs">
+                <li class="active"><h4>Deseja excluir @Html.DisplayFor(model => model.Nome) ? </h4></li>
+            </ul>
+        </div>
+
+        <div class="tab-content">
+
+            <div class="tab-pane active" id="tickets-list">
+                <div class="block-content-full">
+                    <div class="table-responsive remove-margin-bottom">
+                        <table class="table table-striped table-vcenter remove-margin-bottom">
+
+                            <tbody>
+                                <tr>
+                                    <td class="text-left">Nome Completo:</td>
+                                    <td>@Html.DisplayFor(model => model.Nome) @Html.DisplayFor(model => model.Sobrenome)</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-left">Data Nascimento:</td>
+                                    <td>@Html.DisplayFor(model => model.DataNascimento)</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-left">É amigo ou familiar: </td>
+                                    <td>@Html.DisplayFor(model => model.AmigoOuFamiliar)</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-left">Já te deu presente?</td>
+                                    <td>@Html.DisplayFor(model => model.TeDeuPresente)</td>
+                                </tr>
+
+                              
+                            </tbody>
+
+                        </table>
+                        <form asp-action="Delete">
+                            <input type="hidden" asp-for="Id" />
+                            <input type="submit" value="Excluir" style="margin-left: 10px; margin-bottom: 10px;" class="btn themed-background-danger" /> 
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+

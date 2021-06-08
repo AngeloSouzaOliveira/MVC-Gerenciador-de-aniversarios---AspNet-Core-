@@ -1,0 +1,88 @@
+﻿@model IEnumerable<Angsoz.GerenciamentoAmigosAniversario.Web.Models.Presente>
+
+@{
+    ViewData["Title"] = "Lista de presentes";
+}
+
+
+<div class="row">
+    <div class="col-sm-12 col-lg-12">
+
+        <div class="widget">
+            <div class="widget-content border-bottom">
+                <strong> @ViewData["Title"]</strong>
+            </div>
+            <div class="widget-content border-bottom themed-background-muted">
+
+                <div class="row py-5">
+
+                    <div class="col-sm-12 col-lg-3">
+                        <a asp-action="Create" class="btn btn-effect-ripple btn-block btn-success"><i class="fa fa-plus-circle"></i> Adicionar novo presente</a>
+                    </div>
+
+                    <div class="col-sm-12 col-lg-6">
+                    </div>
+
+                    <div class="col-sm-12 col-lg-4">
+
+
+                    </div>
+                </div>
+
+                <table class="table table-hover" style="margin-top:32px;">
+                    <thead style="background-color: #5ccdde">
+                        <tr class="text-white">
+                            <th>
+                                Nome
+                            </th>
+
+                            <th>
+                                Nome do presente
+                            </th>
+                            <th>
+                                Valor do presente
+                            </th>
+                            <th class="text-right">
+                                Ações
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Pessoas.Nome)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Nome)
+                                </td>
+
+                                <td>
+                                    R$ @Html.DisplayFor(modelItem => item.Valor)
+                                </td>
+
+                                <td class="text-right">
+                                    <a class="btn themed-background-creme" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
+                                    <a class="btn themed-background-success" asp-action="Details" asp-route-id="@item.Id">Detalhes</a>
+                                    <a class="btn themed-background-danger" asp-action="Delete" asp-route-id="@item.Id">Excluir</a>
+                                </td>
+
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+
+            </div>
+            <div class="widget-content widget-content-full">
+                <div class="row text-center">
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+

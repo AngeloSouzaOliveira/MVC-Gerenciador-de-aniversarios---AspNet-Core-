@@ -1,0 +1,68 @@
+﻿@model Angsoz.GerenciamentoAmigosAniversario.Web.Models.Pessoa
+
+@{
+    ViewData["Title"] = "Editar pessoa";
+}
+
+
+<h4 style="padding-left:15px"><strong>@Html.DisplayFor(model => model.Nome) @Html.DisplayFor(model => model.Sobrenome)</strong></h4>
+
+
+<div class="row">
+    <div class="col-sm-12 col-lg-12">
+
+        <div class="widget">
+            <div class="col-sm-12 col-lg-6">
+                <div class="widget-content border-bottom">
+                    <strong>@ViewData["Title"] </strong>
+                    <div class="pull-right">
+                        <a asp-action="Index" class="btn themed-background-creme" style="margin-top: -7px;"><i class="fa fa-undo"></i> Voltar a lista de aniversários</a>
+                    </div>
+                </div>
+                <div class="widget-content border-bottom themed-background-muted">
+
+                    <form asp-action="Edit">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group">
+                            <label asp-for="Nome" class="control-label"></label>
+                            <input asp-for="Nome" class="form-control" />
+                            <span asp-validation-for="Nome" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Sobrenome" class="control-label"></label>
+                            <input asp-for="Sobrenome" class="form-control" />
+                            <span asp-validation-for="Sobrenome" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="DataNascimento" class="control-label"></label>
+                            <input asp-for="DataNascimento" class="form-control" />
+                            <span asp-validation-for="DataNascimento" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="AmigoOuFamiliar" class="control-label"></label>
+                            <div>
+                                <input type="radio" value="1" asp-for="AmigoOuFamiliar" checked="@((int)Model.AmigoOuFamiliar == 1 )" /> Amigo |
+                                <input type="radio" value="1" asp-for="AmigoOuFamiliar" checked="@((int)Model.AmigoOuFamiliar == 2)" /> Familiar
+                            </div>
+                        </div>
+                        <div class="form-group form-check">
+                            <label class="form-check-label">
+                                <input class="form-check-input" asp-for="TeDeuPresente" /> @Html.DisplayNameFor(model => model.TeDeuPresente)
+                            </label>
+                        </div>
+                        <input type="hidden" asp-for="Id" />
+                        <div class="form-group">
+                            <input type="submit" value="Salvar" class="btn btn-effect-ripple btn-block btn-success" />
+                        </div>
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }
